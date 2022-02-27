@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>Lezione HTML</title>
+	<style>
+		label {
+			display: block
+		}
+	</style>
+</head>
+
+<body>
+<form action="#">
+	<div>
+		<label for="form-email">Email</label>
+		<input type="email" id="form-email" name="email" required/>
+		<label for="form-pass">Password</label>
+		<input type="password" id="form-pass" name="pass" required/>
+	</div>
+	<div>
+		<label for="form-name">Nome e cognome</label>
+		<input type="text" id="form-name" name="name required"/>
+		<label for="form-dob">Data di nascita</label>
+		<input type="date" id="form-dob" name="dob" required/>
+		<label for="form-tel">Telefono</label>
+		<input type="tel" id="form-tel" name="tel" required/>
+	</div>
+	<div>
+		<label for="form-plan">Piano di abbonamento</label>
+		<select id="form-plan" name="plan" required>
+			<option value="0">Free</option>
+			<optgroup label="Mensili">
+				<option value="199">1.99€/mese</option>
+				<option value="599">5.99€/mese</option>
+				<option value="1199">11.99€/mese</option>
+			</optgroup>
+		</select>
+		<label for="form-pro">Piano PRO</label>
+		<input id="form-pro" name="pro" type="checkbox" required/>
+	</div>
+	<div>
+		<label for="form-cc">Numero Carta</label>
+		<input id="form-cc" name="cc" type="text" inputmode="numeric" pattern="[0-9]{13,16}" maxlenght="16" title="Inserisci un numero di carta di credito valido (minimo 13 - massimo 16 caratteri)." required/>
+		<label for="form-cvc">CVC</label>
+		<input id="form-cvc" name="cvc" type="text" inputmode="numeric" pattern="[0-9]{3}" maxlenght="3" title="Inserisci un CVC valido (3 cifre)." required/>
+		<label for="form-exp">Scadenza</label>
+		<input id="form-exp" name="exp" type="date" required/>
+		<label for="form-address">Indirizzo di fatturazione</label>
+		<input type="text" id="form-address" name="address" required/>
+	</div>
+
+	<button type="submit">Registrati</button>
+</form>
+</body>
+
+</html>
