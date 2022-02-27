@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Esercizio HTML Form</title>
+
+	<style>
+		body {
+			text-align: center;
+		}
+
+		fieldset {
+			margin: auto;
+			padding: 20px;
+			width: 500px;
+		}
+
+		section {
+			margin-bottom: 20px;
+		}
+
+		section:last-child {
+			margin-bottom: 40px;
+		}
+
+		legend {
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+
+		input, select {
+			margin: 10px;
+		}
+
+		input[type="radio"] {
+			margin: 0px;
+		}
+
+		ul {
+			list-style-type: none;
+			padding: 0px;
+		}
+
+		li {
+			display: inline;
+		}
+	</style>
+</head>
+
+<body>
+	<form action="" method="post">
+		<caption><h1>Abbonati al servizio</h1></caption>
+		<section>
+			<fieldset>
+				<legend>Dati Anagrafici</legend>
+				<div>
+					<label for="email">Email</label>
+					<input type="email" id="email" name="email" autofocus required>
+				</div>
+				<div>
+					<label for="password">Password</label>
+					<input type="password" id="password" name="password" pattern="(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Inserisci una password di minimo 5 caratteri, di cui almeno un carattere minuscolo e uno maiuscolo." required>
+				</div>	
+				<div>
+					<label for="nome-cognome">Nome e Cognome</label>
+					<input type="name" id="nome-cognome" name="nome-cognome" required>
+				</div>
+				<div>
+					<label for="nascita">Data di Nascita</label>
+					<input type="date" id="nascita" name="nascita" required>
+				</div>
+				<div>
+					<label for="telefono">Numero di Telefono</label>
+					<input type="tel" id="telefono" name="telefono" inputmode="numeric">
+				</div>	
+			</fieldset>
+		</section>
+
+		<section>
+			<fieldset>
+				<legend>Piano di Abbonamento</legend>
+				<div>
+					<label for="piano">Scegli un abbonamento</label>
+					<select id="piano" name="piano">
+						<optgroup label="Free">
+							<option value="Free">Free</option>
+						</optgroup>
+
+						<optgroup label="A pagamento">
+							<option value="free">7,99€</option>
+							<option value="free">14,99€</option>
+							<option value="free">17,99€</option>
+						</optgroup>
+					</select>
+				</div>
+	
+				<div>
+					<label for="pro">Vuoi aggiungere i vantaggi PRO al tuo piano?</label>
+					<ul>
+						<li>
+							<label for="si">
+								<input type="radio" id="pro-si" name="pro" value="si" checked>
+								Sì
+							</label>
+						</li>
+						<li>
+							<label for="no">
+								<input type="radio" id="pro-no" name="pro" value="no">
+								No
+							</label>
+						</li>
+					</ul>
+				</div>	
+			</fieldset>
+		</section>
+
+		<section>
+			<fieldset>
+				<legend>Metodo di pagamento</legend>
+				<div>
+					<label for="carta-credito">Numero della Carta di Credito</label>
+					<input type="text" id="carta-credito" name="carta-credito" inputmode="numeric" pattern="[0-9]{13,16}" maxlenght="16" title="Inserisci un numero di carta di credito valido (minimo 13 - massimo 16 caratteri)." required>
+				</div>
+				<div>
+					<label for="cvc">CVC</label>
+					<input type="text" id="cvc" name="cvc" inputmode="numeric" pattern="[0-9]{3}" maxlenght="3" title="Inserisci un CVC valido (3 cifre)." required>
+				</div>
+				<div>
+					<label for="scadenza">Scadenza</label>
+					<input type="date" id="scadenza" name="scadenza" min="2022-02-23" required>
+				</div>
+				<div>
+					<label for="indirizzo">Indirizzo di Fatturazione</label>
+					<input type="text" id="indirizzo" name="indirizzo" placeholder="via + CAP + città" required>
+				</div>
+			</fieldset>
+		</section>
+
+		<section>
+			<button type="submit">Attiva l'abbonamento</button>
+		</section>
+	</form>
+</body>
+
+</html>
