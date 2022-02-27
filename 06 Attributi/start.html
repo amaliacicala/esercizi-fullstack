@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Esercizio HTML Attributi</title>
+
+    <style>
+        fieldset {margin: 20px;}
+        label {font-size: 14px; font-weight: bold; line-height: 40px;}
+    </style>
+</head>
+
+<body>
+    <form action="#" method="post">
+        <section>
+            <fieldset>
+                <caption>Pulsante Disabilitato</caption>
+                <div>
+                    <label for="pulsante">Pulsante</label>
+                </div>
+                <button type="submit" id="pulsante" name="pulsante" disabled>Invia</button>
+            </fieldset>
+        </section>
+
+        <section>
+            <fieldset>
+                <caption>Input Numerico</caption>
+                <div>
+                    <label for="numero">Numero</label>
+                </div>
+                <input type="number" id="numero" name="numero" min="0" max="100" step="2" autofocus>
+            </fieldset>
+        </section>
+
+        <section>
+            <fieldset>
+                <caption>Checkbox con Label</caption>
+                <div>
+                    <label for="spunta">Checkbox</label>
+                </div>
+                <input type="checkbox" id="spunta" name="spunta" checked>
+            </fieldset>
+        </section>
+
+        <section>
+            <fieldset>
+                <caption>Input per Date</caption>
+                <div>
+                    <label for="data">Data</label>
+                </div>
+                <input type="date" id="data" name="data" min="2020-01-01" max="2025-01-01">
+            </fieldset>
+        </section>
+    </form>
+</body>
+
+</html>
