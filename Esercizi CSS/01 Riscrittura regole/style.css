@@ -1,0 +1,29 @@
+/* ---- CON CUSTOM PROPERTIES ---- */
+:root {
+  --bg-color: #011212;
+  --ball-color: #ff8800;
+  --ball-size: 100px;
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+.ball {
+  width: var(--ball-size);
+  height: var(--ball-size);
+  background-color: var(--ball-color);
+  border-radius: calc(var(--ball-size) / 2);
+}
+
+/* ---- CSS ORIGINALE ----
+body {
+  background-color: #011212;
+}
+
+.ball {
+  width: 100px;
+  height: 100px;
+  background-color: #ff8800;
+  border-radius: 50px;
+} */
