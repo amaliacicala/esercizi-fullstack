@@ -1,0 +1,43 @@
+body {
+  font-family: monospace;
+}
+
+#expand-toggle {
+  display: none;
+}
+
+.expandable {
+  visibility: collapse;
+  background: gray;
+  color: white;
+}
+
+#expand-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 6px 12px;
+  background-color: #ff8888;
+  border: 1px solid;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* tutti [*] gli .expandable successivi [~] (non per forza immediatamente) a #expande-toggle quando è spuntato [:checked] */
+#expand-toggle:checked ~ * .expandable {
+  visibility: visible;
+}
+
+/* #expand-btn dopo [~] che #expand-toggle è stato spuntato [:checked] */
+#expand-toggle:checked ~ #expand-btn {
+  background-color: #88ff88;
+}
+
+/* contenuto (testo) del pulsante #expand-btn quando non è premuto */
+#expand-btn::after {
+  content: "Mostra righe";
+}
+
+/* contenuto (testo) del pulsante #expand-btn dopo essere stato spuntato [#expand-toggle:checked] */
+#expand-toggle:checked ~ #expand-btn::after {
+  content: "Nascondi righe";
+}
