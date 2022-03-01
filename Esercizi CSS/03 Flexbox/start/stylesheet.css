@@ -9,7 +9,7 @@ aside {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
-  position: absolute;
+  position: fixed;
 
   width: 200px;
   height: 100%;
