@@ -1,0 +1,1 @@
+Riproduci il layout fornito.
