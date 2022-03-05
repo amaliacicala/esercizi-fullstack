@@ -12,7 +12,6 @@ html {
 
 body {
   background-color: #f6bd60;
-  margin: 5rem;
 }
 
 img {
@@ -45,8 +44,8 @@ div.card {
   background-color: #84a59d;
   border-radius: 1rem;
   padding: 1.5rem;
-  margin: 2rem;
-  filter: drop-shadow(0px 0px 20px #f28482);
+  margin: 1rem;
+  filter: drop-shadow(0 0 1rem #f28482);
 }
 
 div.card-header {

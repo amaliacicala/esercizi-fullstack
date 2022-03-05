@@ -1,0 +1,123 @@
+/* ---- TAG GENERALI ---- */
+
+* {
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #242424;
+}
+
+html {
+  font-size: 1.2rem;
+}
+
+body {
+  background-color: #f6bd60;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+}
+
+h3,
+h4 {
+  margin: 0;
+  font-weight: unset;
+}
+
+blockquote {
+  margin: 0;
+  padding: 1.5rem 0 2rem 0;
+}
+
+/* ----------------------- */
+
+main.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "card1 card2 card3";
+  justify-content: center;
+}
+
+div.card {
+  display: flex;
+  flex-flow: column wrap;
+  background-color: #84a59d;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 1rem;
+  filter: drop-shadow(0 0 1rem #f28482);
+}
+
+.card:nth-child(1) {
+  grid-area: card1;
+}
+
+.card:nth-child(2) {
+  grid-area: card2;
+}
+
+.card:nth-child(3) {
+  grid-area: card3;
+}
+
+div.card-header {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  padding-bottom: 1.2rem;
+}
+
+div.avatar-placeholder {
+  background-color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 2.5rem;
+}
+
+div.user-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.8rem;
+}
+
+div.ellipsis {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+div.ellipsis svg {
+  width: 1.5rem;
+}
+
+div.social-action {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1.5rem 0 0 1rem;
+  font-size: 1.4rem;
+  color: #f5cac3;
+}
+
+/* ------- TABLET ------- */
+
+@media screen and (max-width: 768px) {
+  main.card-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "card1 card2"
+      "card3 .";
+  }
+}
+
+/* ------- MOBILE ------- */
+
+@media screen and (max-width: 375px) {
+  main.card-container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      "card1 ."
+      "card2 ."
+      "card3 .";
+  }
+}
