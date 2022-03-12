@@ -1,0 +1,134 @@
+/* ------------ TAG GENERALI & STILE ------------ */
+
+html {
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  color: #242628;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem;
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ecf0f3;
+}
+
+div.risultato p {
+  color: white;
+  font-size: 5rem;
+}
+
+div.operazione {
+  background-color: #d2dce3;
+}
+
+div.uguale > p {
+  border: none;
+  background-color: #ff656e;
+}
+
+/* ---------------- CALCOLATRICE ---------------- */
+
+main.calcolatrice {
+  margin: 2rem auto;
+  width: 45rem;
+  border-radius: 1.5rem;
+  background-color: #889dae;
+  filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.3));
+}
+
+section.pulsanti {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 0.3rem;
+}
+
+div.risultato {
+  grid-column: 1 / -1;
+  grid-row: 1;
+
+  justify-content: flex-end;
+
+  background-color: #424d52;
+  border: 0;
+  border-radius: 1.5rem 1.5rem 0 0;
+}
+
+div.uguale {
+  grid-column: 4 / -1;
+  grid-row: 3 / 7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ff656e;
+  border-radius: 0 0 1.5rem 0;
+}
+
+div.zero {
+  grid-column: 1;
+  grid-row: 6;
+  border-radius: 0 0 0 1.5rem;
+}
+
+div.uno {
+  grid-column: 1;
+  grid-row: 5;
+}
+
+div.due {
+  grid-column: 2;
+  grid-row: 5;
+}
+
+div.tre {
+  grid-column: 3;
+  grid-row: 5;
+}
+
+div.quattro {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+div.cinque {
+  grid-column: 2;
+  grid-row: 4;
+}
+
+div.sei {
+  grid-column: 3;
+  grid-row: 4;
+}
+
+div.sette {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+div.otto {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+div.nove {
+  grid-column: 3;
+  grid-row: 3;
+}
