@@ -1,0 +1,78 @@
+/* -------- TAG GENERALI -------- */
+
+html {
+  font-size: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+  color: #242628;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem;
+  background-color: #ecf0f3;
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+/* -------- CALCOLATRICE -------- */
+
+main.calcolatrice {
+  margin: 2rem auto;
+  width: 45rem;
+  border-radius: 1.5rem;
+  background-color: #889dae;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.3));
+}
+
+section.pulsanti {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 0.3rem;
+}
+
+p.risultato {
+  grid-column: 1 / -1;
+  grid-row: 1;
+
+  justify-content: flex-end;
+
+  background-color: #424d52;
+  color: white;
+  border: 0;
+  border-radius: 1.5rem 1.5rem 0 0;
+  font-size: 5rem;
+}
+
+p.operazione {
+  background-color: #d2dce3;
+}
+
+div.uguale {
+  grid-column: 4 / -1;
+  grid-row: 3 / 7;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ff656e;
+  border-radius: 0 0 1.5rem 0;
+}
+
+div.uguale p {
+  border: none;
+  background-color: #ff656e;
+}
+
+p:nth-child(16) {
+  border-radius: 0px 0px 0px 1.5rem;
+}
