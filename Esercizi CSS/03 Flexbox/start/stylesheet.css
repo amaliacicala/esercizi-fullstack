@@ -1,3 +1,7 @@
+html {
+  font-size: 10px;
+}
+
 body {
   background-color: cadetblue;
   margin: 0;
@@ -11,17 +15,17 @@ aside {
   align-items: center;
   position: fixed;
 
-  width: 200px;
+  width: 20rem;
   height: 100%;
-  padding: 20px;
+  padding: 2rem;
   box-sizing: border-box;
 
   background-color: aliceblue;
-  font-size: 18px;
+  font-size: 1.8rem;
 }
 
 aside img {
-  width: 150px;
+  width: 15rem;
 }
 
 aside ul {
@@ -30,13 +34,13 @@ aside ul {
   flex-grow: 1;
 
   padding: 0;
-  margin-top: 50px;
+  margin-top: 5rem;
   list-style-type: none;
 }
 
 li {
   text-align: center;
-  line-height: 30px;
+  line-height: 3rem;
 }
 
 li a {
@@ -50,8 +54,8 @@ li a:hover {
 }
 
 img[alt*="avatar"] {
-  width: 70px;
+  width: 7rem;
   background-color: #2b2b2b;
-  border-radius: 50px;
-  padding: 10px;
+  border-radius: 5rem;
+  padding: 1rem;
 }
