@@ -25,11 +25,6 @@ h4 {
   font-weight: unset;
 }
 
-blockquote {
-  margin: 0;
-  padding: 1.5rem 0 2rem 0;
-}
-
 /* ----------------------- */
 
 main.card-container {
@@ -38,7 +33,7 @@ main.card-container {
   justify-content: center;
 }
 
-div.card {
+article.card {
   display: flex;
   flex-flow: column wrap;
   background-color: #84a59d;
@@ -48,7 +43,7 @@ div.card {
   filter: drop-shadow(0 0 1rem #f28482);
 }
 
-div.card-header {
+section.card-header {
   display: grid;
   grid-template-columns: 15% 70% 15%;
   padding-bottom: 1.2rem;
@@ -77,7 +72,7 @@ div.ellipsis svg {
   width: 1.5rem;
 }
 
-div.social-action {
+section.social-action {
   display: flex;
   flex-direction: row;
   gap: 1rem;
