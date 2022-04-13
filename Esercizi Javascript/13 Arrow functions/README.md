@@ -1,0 +1,2 @@
+# Arrow functions - Exercise 3
+Trasforma le variabili funzione in arrow functions e concatenale in modo tale che venga stampato sulla console la seguente operazione matematica: `((2 + 4) * (5 + 2) - 2) / 5`
