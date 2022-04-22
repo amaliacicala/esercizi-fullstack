@@ -9,7 +9,7 @@
 
 const students = ['Paul', 'George', 'Lucas'];
 
-function addStudent(student) {
+function addStudent(newStudent) {
   students.push(newStudent)
 }
 
