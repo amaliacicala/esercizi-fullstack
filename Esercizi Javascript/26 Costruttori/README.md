@@ -1,0 +1,2 @@
+# Object Constructor - Exercise 2
+Implementare la funzione `Person` che accetta e assegna due argomenti: `firstName` e `lastName` e definisce il metodo `fullName()`, il quale si occupa di concatenare e restituire il nome completo. Infine, istanziare due oggetti: `john` e `simon` tramite la keyword `new` utilizzando la funzione `Person` e stampare in console il nome completo
