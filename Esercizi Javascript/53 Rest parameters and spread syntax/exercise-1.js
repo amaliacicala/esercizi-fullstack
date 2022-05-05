@@ -3,8 +3,8 @@
 // }
 
 function sum(...numbers) {
-    let total = numbers.reduce((a,b) => a + b);
-    return total;
+    let total = numbers.reduce((a, b) => a + b);
+    return total
 }
 
 console.log(sum(1, 2, 3, 4, 5));
