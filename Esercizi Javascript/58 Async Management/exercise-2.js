@@ -35,4 +35,8 @@ function fetchPersonById(id) {
   });
 }
 
-fetchPersonById(4).then((person) => console.log(person)).catch(error => {console.log('Error: ' + error.message)})
+fetchPersonById(4)
+.then((person) => console.log(person))
+.catch(error => {
+  console.log('Error: ' + error.message)
+})
