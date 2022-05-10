@@ -36,9 +36,12 @@ const jobs = [
 
 function fetchPersonById(id) {
   return new Promise((resolve, reject) => {
+    
+    const person = persons.find(person => person.id === id);
+
     setTimeout(() => {
-      if (persons.find(person => person.id === id)) {
-        resolve(persons.find(person => person.id === id))
+      if (person) {
+        resolve(JSON.stringify(person))
       } else {
         reject(new Error(`Id ${id} does not exist`))
       };
@@ -48,9 +51,12 @@ function fetchPersonById(id) {
 
 function fetchJobById(id) {
   return new Promise((resolve, reject) => {
+
+    const job = jobs.find(job => job.id === id);
+
     setTimeout(() => {
-      if (jobs.find(job => job.id === id) && jobs.map(job => job.jobTitle)) {
-        resolve(jobs.find(job => job.id === id) && jobs.map(job => job.jobTitle))
+      if (job) {
+        resolve(JSON.stringify(job))
       } else {
         reject(new Error(`Id ${id} does not exists`))
       }

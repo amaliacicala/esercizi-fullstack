@@ -40,7 +40,7 @@ function fetchPersonById(id) {
     const person = persons.find(person => person.id === id);
 
     if (person) {
-      resolve(person);
+      resolve(JSON.stringify(person));
     } else {
       reject(new Error('Person not found'))
     }
@@ -51,30 +51,10 @@ function fetchPersonById(id) {
 function fetchJobById(id) {
   return new Promise((resolve, reject) => {
 
-    const jobById = jobs.find(job => job.id === id);
-    const job = jobs.map(job => job.jobTitle);
+    const job = jobs.find(job => job.id === id);
 
-    // const jobById = jobs.find(job => job.id === id);
-    // const job = jobById.map(job => job.jobTitle);
-
-
-    // const jobById = jobs.find(job => job.id === id);
-    // function mapJob() {
-    //   return jobById.map(job => job.jobTitle);
-    // }
-
-
-    // const jobById = jobs.find(job => job.id === id).map(jobs.jobTitle);
-
-
-    // const findJobById = jobs.find(job => job.id === id);
-    // function mapJobById() {
-    //   const job = findJobById.map(job => job.jobTitle);
-    //   return job
-    // }
-
-    if (jobById) {
-      resolve(job);
+    if (job) {
+      resolve(JSON.stringify(job));
     } else {
       reject(new Error('Person not found'))
     }
