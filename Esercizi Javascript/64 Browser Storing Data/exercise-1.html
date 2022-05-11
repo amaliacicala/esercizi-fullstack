@@ -27,11 +27,11 @@ const post = function fetchPost() {
 
 fetchBtn.addEventListener('click', post);
 
-const storeTest = function() {
+const savePost = function() {
   localStorage.setItem('post', JSON.stringify(fetchResult));
   console.log(localStorage.getItem('post'));
 }
 
-saveBtn.addEventListener('click', storeTest);
+saveBtn.addEventListener('click', savePost);
 
 </script>
