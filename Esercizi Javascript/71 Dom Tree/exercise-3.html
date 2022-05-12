@@ -1,0 +1,36 @@
+<html>
+  <body>
+    <div id="container">
+      <form>
+        <div>
+          <label>First Name:</label>
+          <input type="text" class="form-input" id="firstName" value="Mario"/>
+        </div>
+        <div>
+          <label>Last Name:</label>
+          <input type="text" class="form-input" id="lastName" value="Rossi"/>
+        </div>
+        <div>
+          <label>Age:</label>
+          <input type="number" class="form-input" id="age" value="25"/>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+
+const inputEls = document.querySelectorAll('input');
+
+function printFields(param) {
+  for (let i = 0; i < param.length; i++) {
+    let labels = param[i].previousElementSibling.innerText;
+    let values = param[i].value;
+    console.log(`${labels} ${values}`)
+  }
+};
+
+printFields(inputEls);
+
+</script>
