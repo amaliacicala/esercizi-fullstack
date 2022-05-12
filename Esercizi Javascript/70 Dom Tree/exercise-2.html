@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <div id="container">
+      <form>
+        <div>
+          <label>First Name:</label>
+          <input type="text" class="form-input" id="firstName" value="Mario" />
+        </div>
+        <div>
+          <label>Last Name:</label>
+          <input type="text" class="form-input" id="lastName" value="Rossi" />
+        </div>
+        <div>
+          <label>Age:</label>
+          <input type="number" class="form-input" id="age" value="25" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+
+  // Nonostante tutti e tre gli input abbiano la classe form-input, viene stampato
+  // solo il nome (ovvero il primo input) perché il metodo querySelector ritorna solo il
+  // primo elemento nel DOM che matcha il selettore specificato:
+
+  const firstName = document.querySelector('.form-input'); 
+  console.log(firstName.value)
+
+</script>
