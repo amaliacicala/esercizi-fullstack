@@ -10,6 +10,6 @@ const person = {
 // const lastName = person.lastName;
 // const age = person.age;
 
-const { id = person.id, firstName = person.firstName, lastName = person.lastName, age = person.age } = person
+const { id, firstName, lastName, age } = person;
   
 console.log(id, firstName, lastName, age);
