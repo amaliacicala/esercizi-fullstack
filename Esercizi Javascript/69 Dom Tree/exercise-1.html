@@ -1,0 +1,37 @@
+<html>
+  <body>
+    <div id="container">
+      <form>
+        <div>
+          <label>First Name:</label>
+          <input type="text" class="form-input" id="firstName" value="Mario" />
+        </div>
+        <div>
+          <label>Last Name:</label>
+          <input type="text" class="form-input" id="lastName" value="Rossi" />
+        </div>
+        <div>
+          <label>Age:</label>
+          <input type="number" class="form-input" id="age" value="25" />
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  
+  // metodo 1
+  const firstName = document.getElementById('firstName');
+  console.log(firstName.value);
+
+  // metodo 2
+  function printName () {
+    console.log(firstName.value)
+  }
+  printName()
+
+  // metodo 3
+  console.log(document.getElementById('firstName').value);
+
+</script>
