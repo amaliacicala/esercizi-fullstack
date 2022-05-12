@@ -34,21 +34,26 @@ function fetchPersonById(id) {
 }
 
 fetchPersonById(2)
+.then((resolve) => {
+  return resolve
+})
 .then((resolve) => { 
   console.log(JSON.parse(resolve)) 
 })
-.catch
-// .catch(error => {
-//   console.log(`${error.message} - Person with this id doesn't exist`)
-// })
+.catch(error => {
+  console.log(`${error.message} - Person with this id doesn't exist`)
+})
+
+
+// Esempio con id inesistente
 
 fetchPersonById(4)
+.then((resolve) => {
+  return resolve
+})
 .then((resolve) => { 
   console.log(JSON.parse(resolve)) 
 })
-.catch // Posso scrivere solo .catch per far tornare il messaggio del reject della promise, o c'è un altro modo per farlo? 
-
-// .catch(error => {
-//   console.log(`${error.message} - Person with this id doesn't exist`)
-// })
-
+.catch(error => {
+  console.log(`${error.message} - Person with this id doesn't exist`)
+})
