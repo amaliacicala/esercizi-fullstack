@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <div id="container">
+      <h2>Person's Form</h2>
+      <form id="person-form">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+window.onload = function initForm() {
+  const personForm = document.getElementById('person-form');
+
+  const firstName = document.createElement('input');
+  firstName.setAttribute('type', 'text');
+  firstName.setAttribute('placeholder', 'First Name');
+  personForm.insertBefore(firstName, personForm.children[0]);
+
+  const lastName = document.createElement('input');
+  lastName.setAttribute('type', 'text');
+  lastName.setAttribute('placeholder', 'Last Name');
+  personForm.insertBefore(lastName, personForm.children[1]);
+
+  const age = document.createElement('input');
+  age.setAttribute('type', 'number');
+  age.setAttribute('placeholder', 'Age');
+  personForm.insertBefore(age, personForm.children[2]);
+}
+</script>
