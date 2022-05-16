@@ -1,0 +1,57 @@
+<html>
+  <body>
+    <div id="container">
+      <h2>Person's List</h2>
+      <table id="person-table">
+        <tbody></tbody>
+      </table>
+      <button id="add-row">Add row</button>
+    </div>
+  </body>
+</html>
+
+<script>
+
+// Versione 1 --------------
+
+const buttonEl = document.getElementById('add-row');
+
+buttonEl.onclick = function addRow() {
+  const tbodyEl = document.querySelector('tbody');
+
+  const newTrNode = document.createElement('tr');
+  tbodyEl.append(newTrNode);
+
+  const firstName = document.createElement('th');
+  firstName.innerText = 'First Name';
+  newTrNode.append(firstName);
+
+  const lastName = document.createElement('th');
+  lastName.innerText = 'Last Name';
+  newTrNode.append(lastName);
+
+  const age = document.createElement('th');
+  age.innerText = 'Age';
+  newTrNode.append(age);
+}
+
+
+// Versione 2 (con metodo insertRow()) --------------
+
+// const buttonEl = document.getElementById('add-row');
+
+// buttonEl.onclick = function addRow() {
+//   const table = document.getElementById('person-table');
+//   const row = table.insertRow(0);
+
+//   const firstName = row.insertCell(0);
+//   firstName.innerHTML = 'First Name';
+
+//   const lastName = row.insertCell(1);
+//   lastName.innerHTML = 'Last Name';
+
+//   const age = row.insertCell(2);
+//   age.innerHTML = 'Age';
+// }
+
+</script>
