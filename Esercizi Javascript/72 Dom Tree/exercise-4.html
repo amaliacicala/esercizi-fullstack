@@ -1,0 +1,36 @@
+<html>
+  <body>
+    <div id="container">
+      <form>
+        <div>
+          <label>First Name:</label>
+          <input type="text" class="form-input" id="firstName" value="Mario"/>
+        </div>
+        <div>
+          <label>Last Name:</label>
+          <input type="text" class="form-input" id="lastName" value="Rossi"/>
+        </div>
+        <div>
+          <label>Age:</label>
+          <input type="number" class="form-input" id="age" value="25"/>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+
+const inputEls = document.querySelectorAll('input');
+
+const person = {};
+inputEls.forEach((input) => (person[input.id] = input.value));
+
+const formEl = document.querySelector('form');
+const personString = JSON.stringify(person);
+formEl.setAttribute('data-person', personString);
+
+console.log(person);
+console.log(formEl);
+
+</script>
