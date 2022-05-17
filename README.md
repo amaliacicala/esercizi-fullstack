@@ -1,1 +1,1 @@
-# Esercizi HTML del corso Full Stack
+# Esercizi del corso Full Stack
