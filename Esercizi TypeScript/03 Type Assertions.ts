@@ -2,7 +2,7 @@
  * START: Follow the instructions below.
  */
 
-function getPopulation(): any {
+function getPopulation(): number {
     return 69_950_850;
 }
 
