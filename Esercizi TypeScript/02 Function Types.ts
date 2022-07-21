@@ -27,7 +27,7 @@ function languagesSpoken(country: string, language1: string, language2?: string)
 
     console.log(language1);
 
-    if (typeof language2 === 'string') {
+    if (typeof language2 !== undefined) {
         console.log(language2)
     }
 }

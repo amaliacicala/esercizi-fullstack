@@ -30,7 +30,7 @@ class Currency {
     // Add a return type for this method
     // Hint: Look at the inferred return type.
 
-    describe(): void {
+    public describe(): void {
         // Replace the `null` values below with the appropriate field values.
         // Hint: Access field values with: this.fieldName
 
