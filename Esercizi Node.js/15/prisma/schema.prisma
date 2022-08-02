@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Watchlist {
+    id              Int         @id @default(autoincrement())
+    filmTitle       String      @db.VarChar(50)
+    plot            String?     @db.VarChar(250)
+    year            Int
+    director        String      @db.VarChar(30)
+    genres          String      @db.VarChar(250)
+    watched         Boolean     @default(false)
+    createdAt       DateTime    @default(now())
+    updatedAt       DateTime    @updatedAt
+}
