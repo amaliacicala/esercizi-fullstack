@@ -4,6 +4,7 @@ import { prismaMock } from './lib/prisma/client.mock';
 
 const req = supertest(app);
 
+// GET /watchlist - test for retrieving films' list
 test('GET /watchlist', async () => {
 	const list = [
 		{
@@ -39,4 +40,23 @@ test('GET /watchlist', async () => {
 		.expect('Content-Type', /application\/json/);
 
 	expect(res.body).toEqual(list);
+});
+
+// POST /film - test for posting a new film resource to the watchlist
+test('POST /film', async () => {
+	const film = {
+		filmTitle: 'Whiplash',
+		year: 2014,
+		director: 'Damien Chazelle',
+		genres: 'psychological drama, music',
+		watched: true,
+	};
+
+	const res = await req
+		.post('/watchlist')
+		.send(film)
+		.expect(201)
+		.expect('Content-Type', /application\/json/);
+
+	expect(res.body).toEqual(film);
 });
