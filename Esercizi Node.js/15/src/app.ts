@@ -3,6 +3,7 @@ import 'express-async-errors';
 
 const app = express();
 
+// GET /watchlist - retrieve all films in the list
 app.get('/watchlist', (req, res) => {
 	res.json([
 		{
