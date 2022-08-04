@@ -3,17 +3,21 @@ import 'express-async-errors';
 
 const app = express();
 
-app.get('/fruit', (req, res) => {
+app.get('/watchlist', (req, res) => {
 	res.json([
 		{
-			fruit: 'Apple',
-			size: 'Medium',
-			color: 'Red',
+			filmTitle: 'Inside Llewyin Davis',
+			year: 2013,
+			director: 'Joel Coen, Nathan Coen',
+			genres: 'black comedy, drama, music',
+			watched: true,
 		},
 		{
-			fruit: 'Blackberry',
-			size: 'Small',
-			color: 'Purple',
+			filmTitle: 'Vengeance',
+			year: 2022,
+			director: 'B.J. Novak',
+			genres: 'comedy, mystery, thriller',
+			watched: false,
 		},
 	]);
 });

@@ -3,22 +3,26 @@ import app from './app';
 
 const req = supertest(app);
 
-test('GET /fruit', async () => {
+test('GET /watchlist', async () => {
 	const res = await req
-		.get('/fruit')
+		.get('/watchlist')
 		.expect(200)
 		.expect('Content-Type', /application\/json/);
 
 	expect(res.body).toEqual([
 		{
-			fruit: 'Apple',
-			size: 'Medium',
-			color: 'Red',
+			filmTitle: 'Inside Llewyin Davis',
+			year: 2013,
+			director: 'Joel Coen, Nathan Coen',
+			genres: 'black comedy, drama, music',
+			watched: true,
 		},
 		{
-			fruit: 'Blackberry',
-			size: 'Small',
-			color: 'Purple',
+			filmTitle: 'Vengeance',
+			year: 2022,
+			director: 'B.J. Novak',
+			genres: 'comedy, mystery, thriller',
+			watched: false,
 		},
 	]);
 });
