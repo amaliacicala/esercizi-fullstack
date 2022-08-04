@@ -24,7 +24,11 @@ app.get('/watchlist', async (req, res) => {
 
 // POST /film - test for posting a new film resource to the watchlist
 app.post('/watchlist', validate({ body: filmSchema }), async (req, res) => {
-	const film: FilmData = req.body;
+	const filmData: FilmData = req.body;
+
+	const film = await prisma.watchlist.create({
+		data: filmData,
+	});
 
 	res.status(201).json(film);
 });

@@ -1,12 +1,11 @@
-import { describe } from 'node:test';
 import supertest from 'supertest';
-import app from './app';
 import { prismaMock } from './lib/prisma/client.mock';
+import app from './app';
 
 const req = supertest(app);
 
 // GET /watchlist - test for retrieving films' list
-describe('GET /watchlist', async () => {
+describe('GET /watchlist', () => {
 	// valid GET request test
 	test('Valid request', async () => {
 		const list = [
@@ -47,20 +46,33 @@ describe('GET /watchlist', async () => {
 });
 
 // POST /film - test for posting a new film resource to the watchlist
-describe('POST /film', async () => {
+describe('POST /film', () => {
 	// valid POST request test
 	test('Valid request', async () => {
 		const film = {
+			id: 3,
 			filmTitle: 'Whiplash',
+			plot: null,
 			year: 2014,
 			director: 'Damien Chazelle',
 			genres: 'psychological drama, music',
 			watched: true,
+			createdAt: '2022-08-04T18:21:58.870Z',
+			updatedAt: '2022-08-04T18:21:58.874Z',
 		};
+
+		// @ts-ignore
+		prismaMock.watchlist.create.mockResolvedValue(film);
 
 		const res = await req
 			.post('/watchlist')
-			.send(film)
+			.send({
+				filmTitle: 'Whiplash',
+				year: 2014,
+				director: 'Damien Chazelle',
+				genres: 'psychological drama, music',
+				watched: true,
+			})
 			.expect(201)
 			.expect('Content-Type', /application\/json/);
 
