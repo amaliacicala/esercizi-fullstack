@@ -3,6 +3,13 @@ import 'express-async-errors';
 
 import prisma from './lib/prisma/client';
 
+import {
+	validate,
+	filmSchema,
+	FilmData,
+	validationErrorMiddleware,
+} from './lib/validation';
+
 const app = express();
 
 // parse the req.body into an object
@@ -16,10 +23,12 @@ app.get('/watchlist', async (req, res) => {
 });
 
 // POST /film - test for posting a new film resource to the watchlist
-app.post('/watchlist', async (req, res) => {
-	const film = req.body;
+app.post('/watchlist', validate({ body: filmSchema }), async (req, res) => {
+	const film: FilmData = req.body;
 
 	res.status(201).json(film);
 });
+
+app.use(validationErrorMiddleware);
 
 export default app;
