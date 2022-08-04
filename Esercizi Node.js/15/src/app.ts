@@ -1,26 +1,15 @@
 import express from 'express';
 import 'express-async-errors';
 
+import prisma from './lib/prisma/client';
+
 const app = express();
 
 // GET /watchlist - retrieve all films in the list
-app.get('/watchlist', (req, res) => {
-	res.json([
-		{
-			filmTitle: 'Inside Llewyin Davis',
-			year: 2013,
-			director: 'Joel Coen, Nathan Coen',
-			genres: 'black comedy, drama, music',
-			watched: true,
-		},
-		{
-			filmTitle: 'Vengeance',
-			year: 2022,
-			director: 'B.J. Novak',
-			genres: 'comedy, mystery, thriller',
-			watched: false,
-		},
-	]);
+app.get('/watchlist', async (req, res) => {
+	const list = await prisma.watchlist.findMany();
+
+	res.json(list);
 });
 
 export default app;
