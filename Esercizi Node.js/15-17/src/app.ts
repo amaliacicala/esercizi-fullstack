@@ -22,6 +22,22 @@ app.get('/watchlist', async (req, res) => {
 	res.json(list);
 });
 
+// GET /watchlist/:id - retrieve a specific film
+app.get('/watchlist/:id(\\d+)', async (req, res, next) => {
+	const filmId = Number(req.params.id);
+
+	const film = await prisma.watchlist.findUnique({
+		where: { id: filmId },
+	});
+
+	if (!film) {
+		res.status(404);
+		return next(`Cannot GET /watchlist/${filmId}`);
+	}
+
+	res.json(film);
+});
+
 // POST /film - test for posting a new film resource to the watchlist
 app.post('/watchlist', validate({ body: filmSchema }), async (req, res) => {
 	const filmData: FilmData = req.body;

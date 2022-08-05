@@ -1,6 +1,7 @@
 import supertest from 'supertest';
 import { prismaMock } from './lib/prisma/client.mock';
 import app from './app';
+import { prisma } from '@prisma/client';
 
 const req = supertest(app);
 
@@ -45,7 +46,60 @@ describe('GET /watchlist', () => {
 	});
 });
 
-// POST /film - test for posting a new film resource to the watchlist
+// GET /watchlist/:id - tests for retrieving a specific film
+describe('GET /watchlist/:id', () => {
+	// valid request
+	test('Valid request', async () => {
+		const film = [
+			{
+				id: 2,
+				filmTitle: 'Vengeance',
+				plot: 'A writer from New York City attempts to solve the murder of a girl he hooked up with and travels down south to investigate the circumstances of her death and discover what happened to her.',
+				year: 2022,
+				director: 'B.J. Novak',
+				genres: 'comedy, mystery, thriller',
+				watched: false,
+				createdAt: '2022-08-04T09:16:40.599Z',
+				updatedAt: '2022-08-04T09:16:02.208Z',
+			},
+		];
+
+		// @ts-ignore
+		prismaMock.watchlist.findUnique.mockResolvedValue(film);
+
+		const res = await req
+			.get('/watchlist/1')
+			.expect(200)
+			.expect('Content-Type', /application\/json/);
+
+		expect(res.body).toEqual(film);
+	});
+
+	// film does not exist
+	test('Film does not exist', async () => {
+		// @ts-ignore
+		prismaMock.watchlist.findUnique.mockResolvedValue(null);
+
+		const res = await req
+			.get('/watchlist/28')
+			.expect(404)
+			.expect('Content-Type', /text\/html/);
+
+		expect(res.text).toContain('Cannot GET /watchlist/28');
+	});
+
+	// invalid film ID
+	test('Invalid film ID', async () => {
+		const res = await req
+			.get('/watchlist/qwerty')
+			.expect(404)
+			.expect('Content-Type', /text\/html/);
+
+		expect(res.text).toContain('Cannot GET /watchlist/qwerty');
+	});
+});
+
+// POST /film - tests for posting a new film resource to the watchlist
 describe('POST /film', () => {
 	// valid POST request test
 	test('Valid request', async () => {
