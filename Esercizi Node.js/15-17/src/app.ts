@@ -71,6 +71,21 @@ app.put(
 	}
 );
 
+// DELETE /watchlist/:id - delete a film
+app.delete('/watchlist/:id(\\d+)', async (req, res, next) => {
+	const filmId = Number(req.params.id);
+
+	try {
+		await prisma.watchlist.delete({
+			where: { id: filmId },
+		});
+
+		res.status(204).end();
+	} catch (err) {
+		res.status(404);
+		next(`Cannot DELETE /watchlist/${filmId}`);
+	}
+});
 app.use(validationErrorMiddleware);
 
 export default app;

@@ -1,7 +1,6 @@
 import supertest from 'supertest';
 import { prismaMock } from './lib/prisma/client.mock';
 import app from './app';
-import { prisma } from '@prisma/client';
 
 const req = supertest(app);
 
@@ -101,7 +100,7 @@ describe('GET /watchlist/:id', () => {
 
 // POST /watchlist - tests for posting a new film resource to the watchlist
 describe('POST /watchlist', () => {
-	// valid POST request test
+	// valid request
 	test('Valid request', async () => {
 		const film = {
 			id: 3,
@@ -133,7 +132,7 @@ describe('POST /watchlist', () => {
 		expect(res.body).toEqual(film);
 	});
 
-	// invalid POST request test
+	// invalid request
 	test('Invalid request', async () => {
 		const film = {
 			year: 2014,
@@ -226,5 +225,40 @@ describe('PUT /watchlist/:id', () => {
 			.expect('Content-Type', /text\/html/);
 
 		expect(res.text).toContain('Cannot PUT /watchlist/qwerty');
+	});
+});
+
+// DELETE /watchlist/:id - tests for deleting a film
+describe('DELETE /watchlist/:id', () => {
+	// valid request
+	test('Valid request', async () => {
+		const res = await req.delete('/watchlist/1').expect(204);
+
+		expect(res.text).toEqual('');
+	});
+
+	// film does not exist
+	test('Film does not exist', async () => {
+		// @ts-ignore
+		prismaMock.watchlist.delete.mockRejectedValue(
+			new Error('Error - film does not exist')
+		);
+
+		const res = await req
+			.delete('/watchlist/28')
+			.expect(404)
+			.expect('Content-Type', /text\/html/);
+
+		expect(res.text).toContain('Cannot DELETE /watchlist/28');
+	});
+
+	// invalid film ID
+	test('Invalid film ID', async () => {
+		const res = await req
+			.delete('/watchlist/qwerty')
+			.expect(404)
+			.expect('Content-Type', /text\/html/);
+
+		expect(res.text).toContain('Cannot DELETE /watchlist/qwerty');
 	});
 });
