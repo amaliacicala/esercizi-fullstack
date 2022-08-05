@@ -38,7 +38,7 @@ app.get('/watchlist/:id(\\d+)', async (req, res, next) => {
 	res.json(film);
 });
 
-// POST /film - test for posting a new film resource to the watchlist
+// POST /watchlist - post a new film resource to the watchlist
 app.post('/watchlist', validate({ body: filmSchema }), async (req, res) => {
 	const filmData: FilmData = req.body;
 
@@ -48,6 +48,28 @@ app.post('/watchlist', validate({ body: filmSchema }), async (req, res) => {
 
 	res.status(201).json(film);
 });
+
+// PUT /watchlist/:id - update an existing film
+app.put(
+	'/watchlist/:id(\\d+)',
+	validate({ body: filmSchema }),
+	async (req, res, next) => {
+		const filmId = Number(req.params.id);
+		const filmData: FilmData = req.body;
+
+		try {
+			const film = await prisma.watchlist.update({
+				where: { id: filmId },
+				data: filmData,
+			});
+
+			res.status(200).json(film);
+		} catch (error) {
+			res.status(404);
+			next(`Cannot PUT /watchlist/${filmId}`);
+		}
+	}
+);
 
 app.use(validationErrorMiddleware);
 
