@@ -1,5 +1,6 @@
 import express from 'express';
 import 'express-async-errors';
+import cors from 'cors';
 
 import prisma from './lib/prisma/client';
 
@@ -10,10 +11,17 @@ import {
 	validationErrorMiddleware,
 } from './lib/validation';
 
+const corsOptions = {
+	origin: 'http://localhost:8080',
+};
+
 const app = express();
 
 // parse the req.body into an object
 app.use(express.json());
+
+// CORS middleware
+app.use(cors(corsOptions));
 
 // GET /watchlist - retrieve all films in the list
 app.get('/watchlist', async (req, res) => {

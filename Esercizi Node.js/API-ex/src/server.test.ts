@@ -39,7 +39,8 @@ describe('GET /watchlist', () => {
 		const res = await req
 			.get('/watchlist')
 			.expect(200)
-			.expect('Content-Type', /application\/json/);
+			.expect('Content-Type', /application\/json/)
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
 
 		expect(res.body).toEqual(list);
 	});
@@ -69,7 +70,8 @@ describe('GET /watchlist/:id', () => {
 		const res = await req
 			.get('/watchlist/1')
 			.expect(200)
-			.expect('Content-Type', /application\/json/);
+			.expect('Content-Type', /application\/json/)
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
 
 		expect(res.body).toEqual(film);
 	});
@@ -127,7 +129,8 @@ describe('POST /watchlist', () => {
 				watched: true,
 			})
 			.expect(201)
-			.expect('Content-Type', /application\/json/);
+			.expect('Content-Type', /application\/json/)
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
 
 		expect(res.body).toEqual(film);
 	});
@@ -185,7 +188,8 @@ describe('PUT /watchlist/:id', () => {
 				watched: true,
 			})
 			.expect(200)
-			.expect('Content-Type', /application\/json/);
+			.expect('Content-Type', /application\/json/)
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
 
 		expect(res.body).toEqual(film);
 	});
@@ -232,7 +236,10 @@ describe('PUT /watchlist/:id', () => {
 describe('DELETE /watchlist/:id', () => {
 	// valid request
 	test('Valid request', async () => {
-		const res = await req.delete('/watchlist/1').expect(204);
+		const res = await req
+			.delete('/watchlist/1')
+			.expect(204)
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
 
 		expect(res.text).toEqual('');
 	});
