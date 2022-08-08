@@ -13,6 +13,7 @@ datasource db {
 model Watchlist {
     id              Int         @id @default(autoincrement())
     filmTitle       String      @db.VarChar(50)
+    posterFilename   String?     @db.VarChar(250)
     plot            String?     @db.VarChar(250)
     year            Int
     director        String      @db.VarChar(30)

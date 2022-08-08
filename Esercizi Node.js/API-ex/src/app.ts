@@ -1,6 +1,7 @@
 import express from 'express';
 import 'express-async-errors';
 import cors from 'cors';
+import { initMulterMiddleware } from './lib/middleware/multer';
 
 import prisma from './lib/prisma/client';
 
@@ -10,6 +11,8 @@ import {
 	FilmData,
 	validationErrorMiddleware,
 } from './lib/validation';
+
+const upload = initMulterMiddleware();
 
 const corsOptions = {
 	origin: 'http://localhost:8080',
@@ -57,6 +60,34 @@ app.post('/watchlist', validate({ body: filmSchema }), async (req, res) => {
 	res.status(201).json(film);
 });
 
+// POST /watchlist/:id/photo - upload a poster to a film
+app.post(
+	'/watchlist/:id(\\d+)/poster',
+	upload.single('poster'),
+	async (req, res, next) => {
+		// if there's no file
+		if (!req.file) {
+			res.status(400);
+			return next('No photo file uploaded.');
+		}
+
+		const filmId = Number(req.params.id);
+		const posterFilename = req.file.filename;
+
+		try {
+			await prisma.watchlist.update({
+				where: { id: filmId },
+				data: { posterFilename },
+			});
+
+			res.status(201).json({ posterFilename });
+		} catch (err) {
+			res.status(404);
+			next(`Cannot POST /watchlist/${filmId}/poster`);
+		}
+	}
+);
+
 // PUT /watchlist/:id - update an existing film
 app.put(
 	'/watchlist/:id(\\d+)',
@@ -94,6 +125,10 @@ app.delete('/watchlist/:id(\\d+)', async (req, res, next) => {
 		next(`Cannot DELETE /watchlist/${filmId}`);
 	}
 });
+
+// view poster image in browser
+app.use('/watchlist/posters', express.static('uploads'));
+
 app.use(validationErrorMiddleware);
 
 export default app;

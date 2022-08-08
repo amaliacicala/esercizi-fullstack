@@ -158,6 +158,74 @@ describe('POST /watchlist', () => {
 	});
 });
 
+// POST /watchlist/:id/poster - tests for uploading posters to a film
+describe('POST /watchlist/:id/poster', () => {
+	// valid request with PNG file upload
+	test('Valid request with PNG file upload', async () => {
+		await req
+			.post('/watchlist/28/poster')
+			.attach('poster', 'test-fixtures/posters/poster.png')
+			.expect(201)
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
+	});
+
+	// valid request with JPG file upload
+	test('Valid request with JPG file upload', async () => {
+		await req
+			.post('/watchlist/28/poster')
+			.attach('poster', 'test-fixtures/posters/poster.jpg')
+			.expect(201)
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
+	});
+
+	// invalid request with text file upload
+	test('Invalid request with text file upload', async () => {
+		const res = await req
+			.post('/watchlist/28/poster')
+			.attach('poster', 'test-fixtures/posters/file.txt')
+			.expect(500)
+			.expect('Content-Type', /text\/html/);
+
+		expect(res.text).toContain(
+			'Error: the uploaded file must be a JPG or a PNG image.'
+		);
+	});
+
+	// film does not exist
+	test('Film does not exist', async () => {
+		// @ts-ignore
+		prismaMock.watchlist.update.mockRejectedValue(new Error('Error'));
+
+		const res = await req
+			.post('/watchlist/28/poster')
+			.attach('poster', 'test-fixtures/posters/poster.png')
+			.expect(404)
+			.expect('Content-Type', /text\/html/);
+
+		expect(res.text).toContain('Cannot POST /watchlist/28/poster');
+	});
+
+	// invalid film ID
+	test('Invalid film ID', async () => {
+		const res = await req
+			.post('/watchlist/qwerty/poster')
+			.expect(404)
+			.expect('Content-Type', /text\/html/);
+
+		expect(res.text).toContain('Cannot POST /watchlist/qwerty/poster');
+	});
+
+	// invalid request with no file upload
+	test('Invalid request with no file upload', async () => {
+		const res = await req
+			.post('/watchlist/28/poster')
+			.expect(400)
+			.expect('Content-Type', /text\/html/);
+
+		expect(res.text).toContain('No photo file uploaded.');
+	});
+});
+
 // PUT /watchlist/:id - tests for updating an existing film
 describe('PUT /watchlist/:id', () => {
 	// valid request
