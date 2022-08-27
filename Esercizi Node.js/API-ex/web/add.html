@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Add a film to the watchlist</title>
+	</head>
+	<body>
+		<p>
+			<a
+				href="http://localhost:3001/auth/login?redirectTo=http://localhost:8080/add"
+				>Login</a
+			>
+		</p>
+
+		<form action="http://localhost:3001/watchlist" id="form-add">
+			<label>
+				<strong>Film title:</strong>
+				<input type="text" name="filmTitle" />
+			</label>
+
+			<label>
+				<strong>Year:</strong>
+				<input type="number" name="year" />
+			</label>
+
+			<label>
+				<strong>Director:</strong>
+				<input type="text" name="director" />
+			</label>
+
+			<label>
+				<strong>Genres:</strong>
+				<input type="text" name="genres" />
+			</label>
+
+			<label>
+				<strong>Watched:</strong>
+				<input type="checkbox" name="watched" />
+			</label>
+
+			<input type="submit" value="Add film" />
+		</form>
+
+		<script>
+			async function addFilm(event) {
+				event.preventDefault();
+
+				const form = event.currentTarget;
+
+				const formData = new FormData(form);
+				const plainFormData = Object.fromEntries(formData.entries());
+				const formDataJsonString = JSON.stringify(plainFormData);
+
+				const url = form.action;
+
+				const res = await fetch(url, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: formDataJsonString,
+					credentials: 'include',
+				});
+
+				const film = await res.json();
+
+				console.dir(film);
+			}
+
+			const addForm = document.getElementById('form-add');
+
+			addForm.addEventListener('submit', addFilm);
+		</script>
+	</body>
+</html>

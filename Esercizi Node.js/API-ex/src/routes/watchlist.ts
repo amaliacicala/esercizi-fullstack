@@ -1,11 +1,10 @@
-import express, { Router } from "express";
-import { initMulterMiddleware } from '../lib/middleware/multer';
+import express, { Router } from 'express';
 import prisma from '../lib/prisma/client';
-import {
-	validate,
-	filmSchema,
-	FilmData,
-} from '../lib/middleware/validation';
+
+import { validate, filmSchema, FilmData } from '../lib/middleware/validation';
+
+import { initMulterMiddleware } from '../lib/middleware/multer';
+import { checkAuthorization } from '../lib/middleware/passport';
 
 const upload = initMulterMiddleware();
 
@@ -35,19 +34,25 @@ router.get('/:id(\\d+)', async (req, res, next) => {
 });
 
 // POST /watchlist - post a new film resource to the watchlist
-router.post('/', validate({ body: filmSchema }), async (req, res) => {
-	const filmData: FilmData = req.body;
+router.post(
+	'/',
+	checkAuthorization,
+	validate({ body: filmSchema }),
+	async (req, res) => {
+		const filmData: FilmData = req.body;
 
-	const film = await prisma.watchlist.create({
-		data: filmData,
-	});
+		const film = await prisma.watchlist.create({
+			data: filmData,
+		});
 
-	res.status(201).json(film);
-});
+		res.status(201).json(film);
+	}
+);
 
 // POST /watchlist/:id/photo - upload a poster to a film
 router.post(
 	'/:id(\\d+)/poster',
+	checkAuthorization,
 	upload.single('poster'),
 	async (req, res, next) => {
 		// if there's no file
@@ -76,6 +81,7 @@ router.post(
 // PUT /watchlist/:id - update an existing film
 router.put(
 	'/:id(\\d+)',
+	checkAuthorization,
 	validate({ body: filmSchema }),
 	async (req, res, next) => {
 		const filmId = Number(req.params.id);
@@ -96,7 +102,7 @@ router.put(
 );
 
 // DELETE /watchlist/:id - delete a film
-router.delete('/:id(\\d+)', async (req, res, next) => {
+router.delete('/:id(\\d+)', checkAuthorization, async (req, res, next) => {
 	const filmId = Number(req.params.id);
 
 	try {

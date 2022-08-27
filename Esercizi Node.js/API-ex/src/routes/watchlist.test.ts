@@ -40,7 +40,8 @@ describe('GET /watchlist', () => {
 			.get('/watchlist')
 			.expect(200)
 			.expect('Content-Type', /application\/json/)
-			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080')
+			.expect('Access-Control-Allow-Credentials', 'true');
 
 		expect(res.body).toEqual(list);
 	});
@@ -71,7 +72,8 @@ describe('GET /watchlist/:id', () => {
 			.get('/watchlist/1')
 			.expect(200)
 			.expect('Content-Type', /application\/json/)
-			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080')
+			.expect('Access-Control-Allow-Credentials', 'true');
 
 		expect(res.body).toEqual(film);
 	});
@@ -130,7 +132,8 @@ describe('POST /watchlist', () => {
 			})
 			.expect(201)
 			.expect('Content-Type', /application\/json/)
-			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080')
+			.expect('Access-Control-Allow-Credentials', 'true');
 
 		expect(res.body).toEqual(film);
 	});
@@ -166,7 +169,8 @@ describe('POST /watchlist/:id/poster', () => {
 			.post('/watchlist/28/poster')
 			.attach('poster', 'test-fixtures/posters/poster.png')
 			.expect(201)
-			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080')
+			.expect('Access-Control-Allow-Credentials', 'true');
 	});
 
 	// valid request with JPG file upload
@@ -175,7 +179,8 @@ describe('POST /watchlist/:id/poster', () => {
 			.post('/watchlist/28/poster')
 			.attach('poster', 'test-fixtures/posters/poster.jpg')
 			.expect(201)
-			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080')
+			.expect('Access-Control-Allow-Credentials', 'true');
 	});
 
 	// invalid request with text file upload
@@ -257,7 +262,8 @@ describe('PUT /watchlist/:id', () => {
 			})
 			.expect(200)
 			.expect('Content-Type', /application\/json/)
-			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080')
+			.expect('Access-Control-Allow-Credentials', 'true');
 
 		expect(res.body).toEqual(film);
 	});
@@ -307,7 +313,8 @@ describe('DELETE /watchlist/:id', () => {
 		const res = await req
 			.delete('/watchlist/1')
 			.expect(204)
-			.expect('Access-Control-Allow-Origin', 'http://localhost:8080');
+			.expect('Access-Control-Allow-Origin', 'http://localhost:8080')
+			.expect('Access-Control-Allow-Credentials', 'true');
 
 		expect(res.text).toEqual('');
 	});
