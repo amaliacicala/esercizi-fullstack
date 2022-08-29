@@ -40,9 +40,14 @@ router.post(
 	validate({ body: filmSchema }),
 	async (req, res) => {
 		const filmData: FilmData = req.body;
+		const username = req.user?.username as string;
 
 		const film = await prisma.watchlist.create({
-			data: filmData,
+			data: {
+				...filmData,
+				updatedBy: username,
+				createdBy: username,
+			},
 		});
 
 		res.status(201).json(film);
@@ -86,11 +91,16 @@ router.put(
 	async (req, res, next) => {
 		const filmId = Number(req.params.id);
 		const filmData: FilmData = req.body;
+		const username = req.user?.username as string;
 
 		try {
 			const film = await prisma.watchlist.update({
 				where: { id: filmId },
-				data: filmData,
+				data: {
+					...filmData,
+					updatedBy: username,
+					createdBy: username,
+				},
 			});
 
 			res.status(200).json(film);

@@ -18,7 +18,9 @@ model Watchlist {
     year            Int
     director        String      @db.VarChar(30)
     genres          String      @db.VarChar(250)
-    watched         Boolean     @default(false)
+    watched         Boolean?     @default(false)
     createdAt       DateTime    @default(now())
     updatedAt       DateTime    @updatedAt
+    createdBy       String?     @db.VarChar(250)
+    updatedBy       String?     @db.VarChar(250)
 }

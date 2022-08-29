@@ -12,6 +12,10 @@
 				href="http://localhost:3001/auth/login?redirectTo=http://localhost:8080/add"
 				>Login</a
 			>
+			<a
+				href="http://localhost:3001/auth/logout?redirectTo=http://localhost:8080/add"
+				>Logout</a
+			>
 		</p>
 
 		<form action="http://localhost:3001/watchlist" id="form-add">
@@ -33,11 +37,6 @@
 			<label>
 				<strong>Genres:</strong>
 				<input type="text" name="genres" />
-			</label>
-
-			<label>
-				<strong>Watched:</strong>
-				<input type="checkbox" name="watched" />
 			</label>
 
 			<input type="submit" value="Add film" />

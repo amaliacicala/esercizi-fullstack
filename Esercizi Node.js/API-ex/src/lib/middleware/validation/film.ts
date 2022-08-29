@@ -7,7 +7,6 @@ export const filmSchema = Type.Object(
 		year: Type.Integer(),
 		director: Type.String(),
 		genres: Type.String(),
-		watched: Type.Boolean(),
 	},
 	{ additionalProperties: false }
 );
