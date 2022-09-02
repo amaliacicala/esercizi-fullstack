@@ -14,7 +14,7 @@ const fastify = Fastify({
 
 // add a GET route (all data is formatted in JSON by default - no need to serialize it)
 fastify.get('/', async (request, reply) => {
-	reply.send({ data: "Server's up and running with Fastifyyyyy 🏃" });
+	reply.send({ data: "Server's up and running with Fastify 🏃" });
 });
 
 // start the server
